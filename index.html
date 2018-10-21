@@ -1,0 +1,401 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>reveal.js</title>
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/black.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+  <style>
+    svg {
+      background: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>SVG的介绍与应用</section>
+      <section>
+        <section>
+          <h2>SVG 是什么</h2>
+          <p>
+            Scalable Vector Graphics 可缩放矢量图形
+          </p>
+        </section>
+        <section>
+          <p>一个简单的svg</p>
+          <p class="fragment">
+            <svg xmlns="http://www.w3.org/2000/svg" width="400" height="240" viewBox="0 -10 400 240">
+              <rect x="0" y="-10" width="100%" height="100%" fill="#ffffff" />
+              <path d="M75.102,220l12.689-101.666H57.334L70.023,0h74.875L119.52,81.668h43.146L75.102,220z" fill="#7acbff" />
+              <text x="250" y="125" font-size="90" text-anchor="middle" fill="black">MIP</text>
+            </svg>
+          </p>
+          <p>
+            <pre class="fragment">
+              <code data-trim>
+<svg xmlns="http://www.w3.org/2000/svg" 
+     width="400" 
+     height="240" 
+     viewBox="0 -10 400 240">
+  <rect x="0" y="-10" width="100%" height="100%" fill="#ffffff" />
+  <path d="M75.102,220l12.689-101.666H57.334L70.023,0h74.875L119.52,81.668h43.146L75.102,220z" fill="#7acbff" />
+  <text x="250" y="125" font-size="90" text-anchor="middle" fill="black">MIP</text>
+</svg>
+              </code>
+            </pre>
+          </p>
+        </section>
+        <section>
+          我们不一样
+        </section>
+      </section>
+
+      <!-- 线 -->
+      <section>
+        <section>
+          线段与形状
+        </section>
+        <section>
+          <p>
+            <svg width="400" height="250" version="1.1" xmlns="http://www.w3.org/2000/svg" style="background:white"
+              viewBox="-45 0 200 250">
+              <rect x="10" y="10" width="30" height="30" stroke="black" fill="transparent" stroke-width="2" />
+              <rect x="60" y="10" rx="10" ry="10" width="30" height="30" stroke="black" fill="transparent" stroke-width="2" />
+              <circle cx="25" cy="75" r="20" stroke="red" fill="transparent" stroke-width="2" />
+              <ellipse cx="75" cy="75" rx="20" ry="5" stroke="red" fill="transparent" stroke-width="2" />
+              <line x1="10" x2="50" y1="110" y2="150" stroke="orange" fill="transparent" stroke-width="2" />
+              <polyline points="60 110 65 120 70 115 75 130 80 125 85 140 90 135 95 150 100 145" stroke="orange" fill="transparent"
+                stroke-width="2" />
+              <polygon points="50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180" stroke="green"
+                fill="transparent" stroke-width="2" />
+
+              <path d="M20,230 Q40,205 50,230 T90,230" fill="none" stroke="blue" stroke-width="2" />
+            </svg>
+          </p>
+          <p>
+            <pre class="fragment">
+              <code data-trim>
+              <svg width="400" height="250" version="1.1" xmlns="http://www.w3.org/2000/svg" style="background:white" viewBox="-45 0 200 250">
+                <rect x="10" y="10" width="30" height="30" stroke="black" fill="transparent" stroke-width="2" />
+                <rect x="60" y="10" rx="10" ry="10" width="30" height="30" stroke="black" fill="transparent" stroke-width="2" />
+              
+                <circle cx="25" cy="75" r="20" stroke="red" fill="transparent" stroke-width="2" />
+                <ellipse cx="75" cy="75" rx="20" ry="5" stroke="red" fill="transparent" stroke-width="2" />
+              
+                <line x1="10" x2="50" y1="110" y2="150" stroke="orange" fill="transparent" stroke-width="2" />
+                <polyline points="60 110 65 120 70 115 75 130 80 125 85 140 90 135 95 150 100 145" stroke="orange" fill="transparent"
+                  stroke-width="2" />
+              
+                <polygon points="50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180" stroke="green" fill="transparent"
+                  stroke-width="2" />
+              
+                <path d="M20,230 Q40,205 50,230 T90,230" fill="none" stroke="blue" stroke-width="2" />
+              </svg>
+              </code>
+            </pre>
+        </section>
+        <section> 
+          <svg width="500" height="300" viewBox="0 -30 500 400">
+            <g>
+              <text x="50" y="20" font-size="20">stroke</text>
+              <path d="M 50 50 L 350 50" stroke-width="10" stroke="orange" fill="none" />
+            </g>
+            <g>
+              <text x="50" y="100" font-size="20">stroke linecap</text>
+              <path d="M 50 130 L 350 130" stroke-width="10" stroke="orange" stroke-linecap="butt" fill="none" />
+              <path d="M 50 160 L 350 160" stroke-width="10" stroke="orange" stroke-linecap="round" fill="none" />
+              <path d="M 50 190 L 350 190" stroke-width="10" stroke="orange" stroke-linecap="square" fill="none" />
+            </g>
+            <g>
+              <!-- stroke-dasharray="a,b"  a单个虚线长度 b表示间隔-->
+              <text x="50" y="240" font-size="20">stroke-dasharray</text>
+              <path d="M 50 260 L 350 260" stroke-width="10" stroke="orange" stroke-dasharray="10,5" fill="none" />
+              <path d="M 50 290 L 350 290" stroke-width="10" stroke="orange" stroke-dasharray="15,15" fill="none" />
+              <path d="M 50 320 L 350 320" stroke-width="10" stroke="orange" stroke-dasharray="55,2" fill="none" />
+            </g>
+          </svg>
+          <pre class="fragment">
+            <code data-trim>
+              <svg width="500" height="500">
+                <g>
+                  <text x="50" y="20">stroke</text>
+                  <path d="M 50 50 L 350 50" stroke-width="10" stroke="orange" fill="none" />
+                </g>
+                <g>
+                  <text x="50" y="100">stroke linecap</text>
+                  <path d="M 50 130 L 350 130" stroke-width="10" stroke="orange" stroke-linecap="butt" fill="none" />
+                  <path d="M 50 160 L 350 160" stroke-width="10" stroke="orange" stroke-linecap="round" fill="none" />
+                  <path d="M 50 190 L 350 190" stroke-width="10" stroke="orange" stroke-linecap="square" fill="none" />
+                </g>
+                <g>
+                  <text x="50" y="210">stroke-dasharray</text>
+                  <path d="M 50 230 L 350 230" stroke-width="10" stroke="orange" stroke-dasharray="10,5" fill="none" />
+                  <path d="M 50 260 L 350 260" stroke-width="10" stroke="orange" stroke-dasharray="15,15" fill="none" />
+                  <path d="M 50 290 L 350 290" stroke-width="10" stroke="orange" stroke-dasharray="55,2" fill="none" />
+                </g>
+              </svg>
+            </code>
+          </pre>
+        </section>
+        <section>
+          <p></p>
+          <p>
+            <svg width="400" height="260" version="1.1" viewBox="-50 0 500 260">
+              <path fill="transparent" stroke="#000000" stroke-width="4" d="M10 80 Q 100 10, 200 80 T 390 80" class="path"></path>
+              <path fill="transparent" stroke="#000000" stroke-width="4" d="M10 150 Q 100 80, 200 150 T 390 150" class="path2"></path>
+            </svg>
+            <style lang="">
+              .path {
+                stroke-dasharray: 600;
+                stroke-dashoffset: 0;
+                animation: dash 4s linear infinite;
+              }
+              .path2 {
+                stroke-dasharray: 30, 10;
+                stroke-dashoffset: 0;
+                animation: dash 4s linear infinite;
+              }
+              
+              @keyframes dash {
+                from {
+                  stroke-dashoffset: 600;
+                }
+                to {
+                  stroke-dashoffset: 0;
+                }
+              }
+            </style>
+          </p>
+          <p>
+            <pre class="fragment">
+              <code data-trim>
+                <svg width="400" height="280" version="1.1">
+                  <path fill="transparent" stroke="#000000" stroke-width="4" d="M10 80 Q 100 10, 200 80 T 390 80" class="path"></path>
+                  <path fill="transparent" stroke="#000000" stroke-width="4" d="M10 150 Q 100 80, 200 150 T 390 150" class="path2"></path>
+                </svg>
+
+                <style lang="">
+                  .path {
+                    stroke-dasharray: 600;
+                    stroke-dashoffset: 0;
+                    animation: dash 4s linear infinite;
+                  }
+                
+                  .path2 {
+                    stroke-dasharray: 30, 10;
+                    stroke-dashoffset: 0;
+                    animation: dash 4s linear infinite;
+                  }
+                
+                  @keyframes dash {
+                    from {
+                      stroke-dashoffset: 600;
+                    }
+                
+                    to {
+                      stroke-dashoffset: 0;
+                    }
+                  }
+                </style>
+              </code>
+            </pre>
+          </p>
+        </section>
+        <section>
+          <!-- <p> 高级点？ </p> -->
+          <p>
+            <svg width="800" height="510" viewBox="-80 20 380 200">
+              <!--
+                fill属性是否填充
+                stroke为绘制，颜色#AAAAAA
+                stroke-width为绘制线的粗细
+                d是具体数据，这里看到的数据代表了坐标，以及折线等等，可以使用工具生成
+               -->
+              <path style="fill:none;stroke:#000000;stroke-width:0.26px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                d="M 12,94 C 6.8,100 49,83 42,91 31,100 -2.2,110 5.2,110 17,110 44,110 29,99 c -3,-3 -7,31 -7,41 -3,0 -24.6,0 -19.1,0 6.5,-10 52.1,-10 52.1,-10 5,0 -13,-20 2,-20 21,-10 53,-10 43,-11 0,-5 -32,-11 -38,-16 -2,0 -5,-2 -2,-2 0,0 2,59 2,59 -2,0 3,-30 6,-30 0,-10 5,-37 7,-37 3,0 3,18 3,21 0,6 3,46 -3,46 0,0 -7,-30 -7,-30 5,0 -3,20 -3,20 -3,0 10,0 3,0 -6,10 -21,10 -16,10 8,0 16,0 23,0 55,0 -33,-10 -13,20 3,0 37,-30 16,10 0,0 -3,0 -3,10 0,0 6,-20 8,-30 3,-10 11,-67 37,-67 0,0 -42,37 -42,37 5,-10 13,-10 21,-10 11,-10 11,-10 21,-11 30,-8 -20,21 -20,21 0,10 20,-10 20,-10 0,10 -10,40 -10,50 0,0 0,20 0,10 10,-20 20,-30 20,-50 10,0 10,-10 10,-10 0,-10 20,-10 30,-10 0,0 10,-4 10,-1 0,11 -10,11 -10,11 -10,60 0,30 0,30 10,0 20,0 0,0 0,0 -10,-10 -10,-10 -10,0 -10,30 -10,30 0,10 -20,0 -20,0 30,0 70,0 100,0 0,0 80,10 60,10"
+                id="path1" />
+            </svg>
+            <style lang="">
+              #path1{
+                  stroke-dasharray: 1600;
+                  stroke-dashoffset: 0;
+                  animation: dash 4s linear infinite;
+                }
+
+                @keyframes dash {
+                from {
+                 stroke-dashoffset: 1600;
+                }
+                
+                to {
+                stroke-dashoffset: 0;
+                }
+              }
+            </style>
+          </p>
+        </section>
+        <section>
+          <p id="svg-wrap1">
+            <svg width="800" height="510" viewBox="0 0 800 600">
+              <symbol id="s-text">
+                <text text-anchor="middle" x="50%" y="35%" class="text--line">
+                  MIP
+                </text>
+                <text text-anchor="middle" x="50%" y="68%" class="text--line2">
+                  STORY
+                </text>
+
+              </symbol>
+
+              <g class="g-ants">
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+                <use xlink:href="#s-text" class="text-copy"></use>
+              </g>
+            </svg>
+            <style lang="">
+              #svg-wrap1 {
+                font: 4em/1 Arial;
+              }
+
+              .text--line {
+                font-size: .5em;
+              }
+
+              .text-copy {
+                fill: none;
+                stroke: white;
+                stroke-dasharray: 7% 28%;
+                stroke-width:3px;
+                -webkit-animation: stroke-offset 5s infinite linear;
+                animation: stroke-offset 5s infinite linear;
+              }
+
+              .text-copy:nth-child(1) {
+                stroke: #360745;
+                stroke-dashoffset: 7%;
+              }
+
+              .text-copy:nth-child(2) {
+                stroke: #d61c59;
+                stroke-dashoffset: 14%;
+              }
+
+              .text-copy:nth-child(3) {
+                stroke: #e7d84b;
+                stroke-dashoffset: 21%;
+              }
+
+              .text-copy:nth-child(4) {
+                stroke: #efeac5;
+                stroke-dashoffset: 28%;
+              }
+
+              .text-copy:nth-child(5) {
+                stroke: #1b8798;
+                stroke-dashoffset: 35%;
+              }
+
+              @-webkit-keyframes stroke-offset {
+                50% {
+                  stroke-dashoffset: 35%;
+                  stroke-dasharray: 0 87.5%;
+                }
+              }
+
+              @keyframes stroke-offset {
+                50% {
+                  stroke-dashoffset: 35%;
+                  stroke-dasharray: 0 87.5%;
+                }
+              }
+            </style>
+          </p>
+          
+        </section>
+      </section>
+
+      <!-- 文字 -->
+      <section>
+        <section>
+          文  本
+        </section>
+        <section>
+          <!-- <p>font-family、font-style、font-weight、font-variant、font-stretch、font-size、font-size-adjust、kerning、letter-spacing、word-spacing和text-decoration。</p> -->
+          <p>
+            <svg width="300" height="160" viewBox="0 0 300 130" >
+              <text x="150" y="80" font-size="60" text-anchor="middle" fill="#3388ff">Baidu MIP</text>
+            </svg>
+          </p>
+          <p>
+            <pre>
+              <code data-trim>
+                <svg width="300" height="160" viewBox="0 0 300 130">
+                  <text x="150" y="80" font-size="60" text-anchor="middle" fill="#3388ff">Baidu MIP</text>
+                </svg>
+              </code>
+            </pre>
+          </p>
+        </section>
+        <section>
+          <!-- <p>font-family、font-style、font-weight、font-variant、font-stretch、font-size、font-size-adjust、kerning、letter-spacing、word-spacing和text-decoration。</p> -->
+          <p>
+            <svg width="300" height="160" viewBox="0 0 300 130"  >
+              <text x="150" y="60" font-size="60" text-anchor="middle" fill="#3388ff" rotate="-20,20,-30,0" letter-spacing="3">Baidu MIP</text>
+            </svg>
+          </p>
+          <p>
+            <pre>
+              <code data-trim>
+              <svg width="300" height="160" viewBox="0 0 300 130">
+                <text x="150" y="60" font-size="60" text-anchor="middle" fill="#3388ff" rotate="-20,20,-30,0" letter-spacing="3">Baidu
+                  MIP</text>
+              </svg>
+              </code>
+            </pre>
+          </p>
+        </section>
+      </section>
+    </div>
+  </div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+
+  <script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+      dependencies: [
+        { src: 'plugin/markdown/marked.js' },
+        { src: 'plugin/markdown/markdown.js' },
+        { src: 'plugin/notes/notes.js', async: true },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+      ],
+      history: true
+    });
+  </script>
+</body>
+
+</html>
